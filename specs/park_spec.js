@@ -99,4 +99,25 @@ describe('Park', function() {
     assert.strictEqual(actual, expected)
   });
 
+  it('should be able to remove all dinosaurs of a particular species', function() {
+    park.add(dinosaur_1);
+    park.add(dinosaur_2);
+    park.add(dinosaur_3);
+    park.add(dinosaur_4);
+    park.removeBySpecies('Gallimimus')
+    const actual = park.collectionOfDinosaurs;
+    const expected = [dinosaur_1, dinosaur_3, dinosaur_4];
+    assert.deepStrictEqual(actual, expected)
+  });
+
+  it('should be able to calculate number of dinosaurs by diet', function() {
+    park.add(dinosaur_1);
+    park.add(dinosaur_2);
+    park.add(dinosaur_3);
+    park.add(dinosaur_4);
+    const actual = park.numOfDinosaursByDiet();
+    const expected = { Herbivore: 2, Omnivore: 1, Carnivore:1 }
+    assert.deepStrictEqual(actual, expected)
+  });
+
 });

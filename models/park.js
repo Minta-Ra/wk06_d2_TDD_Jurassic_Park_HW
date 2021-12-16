@@ -55,5 +55,27 @@ Park.prototype.yerlyRevenueCount = function() {
     return totalRevenue;
 }
 
+Park.prototype.removeBySpecies = function(species) {
+    const dinosaurs = [];
+    for(const dinosaur of this.collectionOfDinosaurs) {
+        if(dinosaur.species !== species) {
+            dinosaurs.push(dinosaur);
+        }
+    }
+    this.collectionOfDinosaurs = dinosaurs;
+}
+
+Park.prototype.numOfDinosaursByDiet = function() {
+    const numOfDinosaursByDiet = {};
+    for (const dinosaur of this.collectionOfDinosaurs) {
+        if (numOfDinosaursByDiet[dinosaur.diet]) {
+            numOfDinosaursByDiet[dinosaur.diet] += 1;
+        } else {
+            numOfDinosaursByDiet[dinosaur.diet] = 1;
+        }
+    }
+    return numOfDinosaursByDiet;
+}
+
 
 module.exports = Park;
